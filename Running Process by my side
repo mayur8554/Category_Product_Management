@@ -1,0 +1,47 @@
+Category Product Project
+1] Creating a Spring Boot Project
+To create a Spring Boot project, follow these steps:
+•	- Using Spring Initializr
+  - Project: Maven Project
+  - Language: Java
+  - Spring Boot Version: 2.x.x or the latest version
+  - Group: com.project
+  - Artifact: CatProduct
+ - Dependencies:
+    • Spring Web
+    • Spring Data JPA
+    • Spring Boot DevTools
+    • Spring Data JDBC
+After selecting these configurations, generate and download the ZIP file of the project.
+2] Application Properties
+Configure the `application.properties` file to set up the database connection:
+spring.datasource.url=jdbc:mysql://localhost:3306/category_product
+spring.datasource.username=root
+spring.datasource.password=******
+spring.jpa.hibernate.ddl-auto=update
+This property controls Hibernate’s schema generation, updating, or validation at runtime.
+3] Checking Dependencies
+After generating the project, verify that all required dependencies are correctly added to `pom.xml`. If any dependency is missing, manually add it.
+4] Code Setup
+Entities:
+- **Category**: Contains category details and a list of products.
+  - `@OneToMany` to establish a one-to-many relationship with the Product entity.
+- **Product**: Contains product details and a reference to a category.
+  - `@ManyToOne` to associate with a Category.
+Repositories:
+- **CategoryRepository**: Extends JpaRepository for basic CRUD operations.
+  - Has a method to find categories by name and paginate results.
+- **ProductRepository**: Extends JpaRepository for basic CRUD operations.
+  - Contains custom query methods like deleting products by category ID.
+Controllers:
+- **CategoryController**: Contains functions to display all categories, delete, update, show one category, and pagination.
+- **ProductController**: Contains similar methods for product management.
+- `@RestController`: Used to build RESTful web services (combines `@Controller` + `@ResponseBody`).
+5] Postman - API Testing Tool
+Postman is an API testing tool that allows developers to send HTTP requests, inspect responses, and automate RESTful API testing.
+**Key Features:**
+•	✔ User-friendly interface
+•	✔ Easy API requests (GET, POST, PUT, DELETE, etc.)
+•	✔ Automated API Testing
+•	✔ Saves time (avoids using curl commands or browser-based testing)
+•	✔ Auto-generates API documentation
